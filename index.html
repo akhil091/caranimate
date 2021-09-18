@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<head>
+<title>Demos</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<style>
+	body{background-color:black;
+		height:10000px;
+		}
+	.scroll-image{
+		display:block;
+	  }
+	  .scroll-image img{
+		width: 80%;
+		margin: 0 auto;
+		display: block;
+		left:10%;
+	  }
+	  .active{
+		  display:block !important;
+	  }
+
+.car{
+	display: block;
+	top:100px;
+	margin: 0 auto;
+	position: relative;
+	width: 45%;
+	animation: moving 10s linear -2s ;
+	animation-fill-mode: forwards;
+
+  }
+  .car:before {
+	content:"";
+	display:block;
+	animation: carmove 3.1s  linear;
+	animation-fill-mode: forwards;
+	background: url('car/animation/side.jpeg') center/cover;
+	padding-top:45.25%;
+  }
+
+  .weel{
+	animation: wheel 3.5s -2s linear;
+	animation-fill-mode: forwards;
+	background: url('car/animation/tyre.png') center/cover;
+	position: absolute;
+	bottom:0.5%;
+	width: 24%;
+	opacity:0.8
+  }
+  .weel:before {
+	 content:"";
+	 display:block;
+	 padding-top:100%;
+  }
+  .weel1{left: 7%;}
+  .weel2{right: 11%;}
+
+  /*animations*/
+  @keyframes carmove{
+	0%{transform: translateY(0px);}
+	25%{transform: translateY(1px)}
+	29%{transform: translateY(2px)}
+	33%{transform: translateY(3px)}
+	47%{transform: translateY(0px)}
+	58%{transform: translateY(1px)}
+	62%{transform: translateY(2px)}
+	66%{transform: translateY(3px)}
+	75%{transform: translateY(1px)}
+	100%{transform: translateY(0px)}
+  }
+
+  @keyframes wheel{
+   0%{
+	 transform: rotate(0deg)
+	}
+	35% {
+	  transform: rotate(-920deg)
+	}
+	36%,
+	56% {
+	  transform: rotate(-920deg)
+	}
+   100%{
+	 transform: rotate(-1440deg);
+	}
+  }
+
+  @keyframes moving {
+	0% {
+		right: -200rem;
+		animation-timing-function: ease-out;
+	  }
+	  35% {
+		right: 0;
+	  }
+	  36%,50%,
+	  100% {
+
+		animation-timing-function: ease-in;
+	  }
+	}
+
+.cartop img{
+	display: block;
+	width:60%;
+	margin:0 auto;
+	padding-top:5%;
+  }
+
+  .circle {
+	position:absolute;
+	/* border: 1px solid var(--primary); */
+	border-radius: 50%;
+	width:30px;
+	height:30px;
+	opacity: 0;
+	/* animation-name: expand;
+	animation-delay: 2s;
+	animation-duration: 3s;
+	animation-fill-mode: forwards; */
+	animation: scaleIn 3s  cubic-bezier(.36, .11, .89, .32);
+	animation-fill-mode: forwards !important;
+	background-color: #208e9e;
+  }
+  @keyframes scaleIn {
+	0% {
+	  transform: scale(.5, .5);
+	  opacity: 1;
+	}
+	25%{
+	  transform: scale(1, 1);
+	  opacity: 0.8;
+	}
+	50%{
+	  transform: scale(5, 5);
+	  opacity: 0.5;
+	}
+	75%{
+	  transform: scale(5, 5);
+	  opacity: 0.2;
+	}
+	100%{
+	  transform: scale(15, 15);
+	  opacity: 0.1;
+	}
+  }
+  .position4{
+	top: 73%;
+	  left: 27%;
+  }
+  .position3{
+	top: 73%;
+	  right: 27%;
+  }
+  .position2{
+	top: 32%;
+	  right: 27%;
+  }
+  .position1{
+	top: 32%;
+	  left: 27%;
+  }
+</style>
+</head>
+<body>
+	<section>
+	</section>
+
+	<div class="scroll-image">
+		<div class="car ccar active" style="display:none;">
+			<div class="weel weel1"></div>
+			<div class="weel weel2"></div>
+		</div>
+		<img src="car/1.png" class="car1 ccar" style="display:none;">
+		<img src="car/2.png" class="car2 ccar" style="display:none;">
+		<img src="car/3.png" class="car3 ccar" style="display:none;">
+		<img src="car/4.png" class="car4 ccar"  style="display:none;">
+		<img src="car/5.png"  class="car5 ccar" style="display:none;">
+		<img src="car/6.png"  class="car6 ccar" style="display:none;">
+		<img src="car/8.png"  class="car7 ccar" style="display:none;">
+		<img src="car/9.png"  class="car8 ccar" style="display:none;">
+		<img src="car/10.png"  class="car9 ccar" style="display:none;">
+		<img src="car/11.png"  class="car10 ccar" style="display:none;">
+		<img src="car/12.png"  class="car11 ccar" style="display:none;">
+		<img src="car/13.png"  class="car12 ccar" style="display:none;">
+		<img src="car/14.png"  class="car13 ccar" style="display:none;">
+
+		<div class="cartop ccar" style="display:none;">
+			<div class="circle position1"></div>
+			<div class="circle position2"></div>
+			<div class="circle position3"></div>
+			<div class="circle position4"></div>
+			<img src="car/15.png">
+		</div>
+
+	</div>
+<script>$(document).ready(function() {
+	$(window).on("scroll", function() {
+	  console.log($(this).scrollTop())
+	  if($(this).scrollTop() >= 1){
+		$(".car").addClass("transformbig");
+	  }
+	  if($(this).scrollTop() >= 500){
+		$(".ccar").removeClass("active");
+		$(".car2").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 1000){
+		$(".ccar").removeClass("active");
+		$(".car3").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 1500){
+		$(".ccar").removeClass("active");
+		$(".car4").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 2000){
+		$(".ccar").removeClass("active");
+		$(".car5").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 2500){
+		$(".ccar").removeClass("active");
+		$(".car6").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 3000){
+		$(".ccar").removeClass("active");
+		$(".car6").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 3500){
+		$(".ccar").removeClass("active");
+		$(".car7").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 4000){
+		$(".ccar").removeClass("active");
+		$(".car8").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 4500){
+		$(".ccar").removeClass("active");
+		$(".car9").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 5000){
+		$(".ccar").removeClass("active");
+		$(".car10").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 5500){
+		$(".ccar").removeClass("active");
+		$(".car11").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 6000){
+		$(".ccar").removeClass("active");
+		$(".car12").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 6500){
+		$(".ccar").removeClass("active");
+		$(".car13").addClass("active");
+	  }
+
+	  if($(this).scrollTop() >= 7000){
+		$(".ccar").removeClass("active");
+		$(".cartop").addClass("active");
+	  }
+	  if($(this).scrollTop() >= 7500){
+		$(".scroll-image").css({"position":"absolute"});
+	  }
+	  if($(this).scrollTop() < 7500){
+		$(".scroll-image").css({"position":"fixed"});
+	  }
+
+	})
+  })
+</script>
+</body>
+</html>
