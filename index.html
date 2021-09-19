@@ -198,7 +198,8 @@
 	$(window).on("scroll", function() {
 	  console.log($(this).scrollTop())
 	  if($(this).scrollTop() >= 1){
-		$(".car").addClass("transformbig");
+		$(".ccar").removeClass("active");
+		$(".car1").addClass("active");
 	  }
 	  if($(this).scrollTop() >= 500){
 		$(".ccar").removeClass("active");
